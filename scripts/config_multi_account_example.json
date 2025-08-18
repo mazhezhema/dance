@@ -1,0 +1,86 @@
+{
+  "accounts": [
+    {
+      "email": "account1@example.com",
+      "password": "your_password_1",
+      "daily_limit": 25,
+      "profile_dir": "./profiles/account1",
+      "notes": "主账号 - Viggle Pro"
+    },
+    {
+      "email": "account2@example.com", 
+      "password": "your_password_2",
+      "daily_limit": 20,
+      "profile_dir": "./profiles/account2",
+      "notes": "备用账号 - Viggle Pro"
+    },
+    {
+      "email": "account3@example.com",
+      "password": "your_password_3", 
+      "daily_limit": 15,
+      "profile_dir": "./profiles/account3",
+      "notes": "测试账号 - 免费版"
+    }
+  ],
+  "viggle": {
+    "login_url": "https://viggle.ai/login",
+    "dashboard_url": "https://viggle.ai/dashboard",
+    "timeout": 30000
+  },
+  "directories": {
+    "source_videos": "./source_videos",
+    "target_people": "./target_people",
+    "output": "./output", 
+    "profiles": "./profiles",
+    "logs": "./logs",
+    "temp": "./temp"
+  },
+  "anti_spam": {
+    "min_delay_between_accounts": 3600,
+    "max_daily_total": 60,
+    "random_delay_range": [300, 1800],
+    "avoid_peak_hours": [9, 10, 11, 14, 15, 16, 20, 21, 22],
+    "account_rotation_strategy": "least_used",
+    "emergency_stop_on_captcha": true,
+    "max_retries_per_video": 3,
+    "session_rotation_hours": 8
+  },
+  "browser_settings": {
+    "headless": false,
+    "viewport_randomization": true,
+    "user_agent_randomization": true,
+    "network_delay_simulation": true,
+    "human_behavior_simulation": true,
+    "screenshot_on_error": true
+  },
+  "matching_rules": {
+    "dance": "dancers/main_dancer.jpg",
+    "广场舞": "dancers/square_dance_lady.jpg", 
+    "fitness": "fitness/trainer.jpg",
+    "健身": "fitness/yoga_instructor.jpg",
+    "traditional": "traditional/hanfu_girl.jpg",
+    "传统": "traditional/qipao_lady.jpg",
+    "yoga": "fitness/yoga_master.jpg",
+    "瑜伽": "fitness/yoga_instructor.jpg",
+    "children": "children/cute_girl.jpg",
+    "儿童": "children/little_boy.jpg",
+    "elderly": "elderly/grandma.jpg",
+    "老年": "elderly/grandpa.jpg",
+    "default": "default_person.jpg"
+  },
+  "quality_control": {
+    "min_video_duration": 10,
+    "max_video_size_mb": 50,
+    "allowed_video_formats": ["mp4", "avi", "mov", "mkv"],
+    "allowed_image_formats": ["jpg", "jpeg", "png"],
+    "min_image_resolution": [512, 512],
+    "auto_resize_images": true
+  },
+  "notifications": {
+    "enable_notifications": false,
+    "webhook_url": "",
+    "notify_on_completion": true,
+    "notify_on_error": true,
+    "notify_on_daily_limit": true
+  }
+}
