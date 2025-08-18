@@ -1,0 +1,35 @@
+{
+  "viggle": {
+    "email": "your-email@example.com",
+    "password": "your-password",
+    "login_url": "https://viggle.ai/login",
+    "dashboard_url": "https://viggle.ai/dashboard"
+  },
+  "directories": {
+    "source_videos": "./source_videos",
+    "target_people": "./target_people",
+    "output": "./output",
+    "cookies": "./cookies"
+  },
+  "processing": {
+    "batch_size": 2,
+    "wait_timeout": 600,
+    "retry_count": 3,
+    "delay_between_tasks": 300,
+    "daily_limit": 30,
+    "avoid_peak_hours": true
+  },
+  "anti_detection": {
+    "random_delays": true,
+    "human_behavior": true,
+    "session_rotation": true,
+    "emergency_stop": true
+  },
+  "matching_rules": {
+    "dance": "dancer.jpg",
+    "fitness": "fitness_model.jpg", 
+    "traditional": "traditional_woman.jpg",
+    "yoga": "yoga_instructor.jpg",
+    "default": "default_person.jpg"
+  }
+}
