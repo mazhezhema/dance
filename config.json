@@ -1,0 +1,59 @@
+{
+  "accounts": [
+    {
+      "email": "your_viggle_email@example.com",
+      "password": "your_viggle_password",
+      "daily_limit": 40,
+      "profile_dir": "./profiles/main_account",
+      "notes": "主账号 - Viggle Pro"
+    }
+  ],
+  "viggle": {
+    "login_url": "https://viggle.ai/login",
+    "dashboard_url": "https://viggle.ai/dashboard", 
+    "timeout": 30000
+  },
+  "directories": {
+    "source_videos": "./input/videos",
+    "target_people": "./input/people",
+    "output": "./output",
+    "profiles": "./profiles",
+    "logs": "./logs",
+    "temp": "./temp"
+  },
+  "anti_spam": {
+    "min_delay_between_accounts": 3600,
+    "max_daily_total": 40,
+    "random_delay_range": [180, 600],
+    "avoid_peak_hours": [9, 10, 11, 14, 15, 16, 20, 21, 22],
+    "account_rotation_strategy": "least_used",
+    "emergency_stop_on_captcha": true,
+    "max_retries_per_video": 3,
+    "session_rotation_hours": 6
+  },
+  "browser_settings": {
+    "headless": false,
+    "viewport_randomization": true,
+    "user_agent_randomization": true,
+    "network_delay_simulation": true,
+    "human_behavior_simulation": true,
+    "screenshot_on_error": true
+  },
+  "matching_rules": {
+    "dance": "main_dancer.jpg",
+    "广场舞": "square_dance_person.jpg", 
+    "fitness": "fitness_person.jpg",
+    "健身": "fitness_person.jpg",
+    "yoga": "yoga_person.jpg",
+    "瑜伽": "yoga_person.jpg",
+    "default": "default_person.jpg"
+  },
+  "quality_control": {
+    "min_video_duration": 5,
+    "max_video_size_mb": 100,
+    "allowed_video_formats": ["mp4", "avi", "mov", "mkv"],
+    "allowed_image_formats": ["jpg", "jpeg", "png"],
+    "min_image_resolution": [512, 512],
+    "auto_resize_images": true
+  }
+}
