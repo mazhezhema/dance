@@ -162,31 +162,71 @@ def run_gpu_pipeline(args):
 
 def show_status(args):
     """显示项目状态"""
-    orchestrator = DanceOrchestrator()
+    print("📊 Dance项目状态:")
+    print("=" * 60)
     
-    if args.project_id:
-        status = orchestrator.get_project_status(args.project_id)
-        if status:
-            print(f"项目ID: {status['project_id']}")
-            print(f"状态: {status['status']}")
-            print(f"当前阶段: {status['current_stage']}")
-            print(f"进度: {status['progress']}")
-        else:
-            print(f"❌ 项目不存在: {args.project_id}")
+    # 使用数据库统计信息
+    try:
+        from scripts.task_database import task_db
+        stats = task_db.get_overall_stats()
+        
+        print(f"📊 任务统计:")
+        print(f"   总任务数: {stats.get('total_tasks', 0)}")
+        print(f"   已完成: {stats.get('completed_tasks', 0)}")
+        print(f"   失败: {stats.get('failed_tasks', 0)}")
+        print(f"   待处理: {stats.get('pending_tasks', 0)}")
+        print(f"   处理中: {stats.get('processing_tasks', 0)}")
+        print(f"   成功率: {stats.get('success_rate', 0):.1f}%")
+        print(f"   平均处理时间: {stats.get('avg_processing_time', 0):.1f}秒")
+        
+    except ImportError:
+        print("❌ 数据库模块未找到")
+    
+    # 检查输入目录
+    input_dir = Path("tasks_in")
+    if input_dir.exists():
+        video_files = list(input_dir.glob("*.mp4"))
+        print(f"\n📁 输入视频: {len(video_files)} 个文件")
+        for video in video_files[:5]:  # 只显示前5个
+            print(f"   - {video.name}")
+        if len(video_files) > 5:
+            print(f"   ... 还有 {len(video_files) - 5} 个文件")
     else:
-        projects = orchestrator.list_projects()
-        if projects:
-            print("📋 项目列表:")
-            print("-" * 80)
-            for project in projects:
-                print(f"ID: {project['project_id']}")
-                print(f"名称: {project['project_name']}")
-                print(f"状态: {project['status']}")
-                print(f"输入/输出: {project['input_count']}/{project['output_count']}")
-                print(f"开始时间: {project['start_time']}")
-                print("-" * 80)
-        else:
-            print("📭 暂无项目记录")
+        print("\n📁 输入目录不存在")
+    
+    # 检查输出目录
+    output_dir = Path("downloads")
+    if output_dir.exists():
+        output_files = list(output_dir.glob("*.mp4"))
+        print(f"📁 输出视频: {len(output_files)} 个文件")
+    else:
+        print("📁 输出目录不存在")
+    
+    # 检查配置文件
+    config_file = Path("config/viggle_config.json")
+    if config_file.exists():
+        print("✅ 配置文件存在")
+    else:
+        print("❌ 配置文件不存在")
+    
+    # 检查账号配置
+    accounts_file = Path("config/accounts.json")
+    if accounts_file.exists():
+        print("✅ 账号配置存在")
+    else:
+        print("❌ 账号配置不存在")
+    
+    # 检查数据库
+    db_file = Path("tasks/task_status.db")
+    if db_file.exists():
+        print("✅ 数据库文件存在")
+    else:
+        print("❌ 数据库文件不存在")
+    
+    print("\n💡 使用以下命令查看更多信息:")
+    print("   python scripts/task_monitor.py stats     - 详细统计")
+    print("   python scripts/task_monitor.py pending   - 待处理任务")
+    print("   python scripts/task_monitor.py recent    - 最近任务")
 
 def init_config():
     """初始化配置文件"""
