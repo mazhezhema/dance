@@ -1,0 +1,24 @@
+{
+  "project_settings": {
+    "auto_progression": true,
+    "pause_between_stages": false,
+    "stage_timeout_hours": 24,
+    "cleanup_intermediates": true
+  },
+  "notifications": {
+    "enable_stage_notifications": true,
+    "enable_completion_notifications": true,
+    "webhook_url": ""
+  },
+  "quality_control": {
+    "enable_quality_checks": true,
+    "min_success_rate": 0.8,
+    "auto_retry_failed": true,
+    "max_retries": 2
+  },
+  "directories": {
+    "projects": "./projects",
+    "archives": "./archives",
+    "reports": "./reports"
+  }
+}

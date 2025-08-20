@@ -1,0 +1,24 @@
+{
+  "queue_settings": {
+    "input_queue_file": "./modules/processing_queue.json",
+    "batch_size": 5,
+    "max_concurrent_jobs": 2,
+    "priority_threshold": 5
+  },
+  "viggle_settings": {
+    "max_daily_credits": 100,
+    "max_retries_per_video": 3,
+    "timeout_minutes": 15,
+    "cool_down_minutes": 2
+  },
+  "output_settings": {
+    "result_directory": "./viggle_results",
+    "organize_by_category": true,
+    "keep_originals": true
+  },
+  "monitoring": {
+    "enable_notifications": false,
+    "webhook_url": "",
+    "log_level": "INFO"
+  }
+}

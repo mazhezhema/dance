@@ -1,0 +1,39 @@
+{
+  "tools": {
+    "realesrgan_path": "./tools/realesrgan-ncnn-vulkan.exe",
+    "rvm_path": "./tools/inference_rvm.py",
+    "ffmpeg_path": "ffmpeg"
+  },
+  "processing": {
+    "superres_scale": 2,
+    "superres_model": "realesr-animevideov3",
+    "max_concurrent_jobs": 2,
+    "temp_directory": "./temp_gpu",
+    "keep_intermediates": false
+  },
+  "output": {
+    "base_directory": "./final_output",
+    "organize_by_category": true,
+    "video_codec": "libx264",
+    "video_bitrate": "2M",
+    "audio_codec": "aac"
+  },
+  "backgrounds": {
+    "library_path": "./backgrounds",
+    "default_backgrounds": {
+      "dance": "dance_studio.mp4",
+      "fitness": "gym_background.mp4",
+      "traditional": "traditional_stage.mp4",
+      "unknown": "neutral_background.mp4"
+    }
+  },
+  "quality": {
+    "min_duration": 5,
+    "max_duration": 600,
+    "target_fps": 30,
+    "target_resolution": [
+      1920,
+      1080
+    ]
+  }
+}

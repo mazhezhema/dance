@@ -1,0 +1,77 @@
+{
+  "viggle_requirements": {
+    "min_duration": 5,
+    "max_duration": 300,
+    "min_fps": 15,
+    "max_fps": 60,
+    "min_resolution": [
+      480,
+      360
+    ],
+    "max_resolution": [
+      1920,
+      1080
+    ],
+    "max_file_size": 104857600,
+    "supported_codecs": [
+      "h264",
+      "h265",
+      "vp9"
+    ],
+    "supported_formats": [
+      "mp4",
+      "avi",
+      "mov",
+      "mkv"
+    ]
+  },
+  "scoring_weights": {
+    "duration": 0.2,
+    "resolution": 0.25,
+    "fps": 0.15,
+    "quality": 0.25,
+    "file_size": 0.15
+  },
+  "categories": {
+    "keywords": {
+      "dance": [
+        "舞蹈",
+        "广场舞",
+        "dance",
+        "dancing"
+      ],
+      "fitness": [
+        "健身",
+        "瑜伽",
+        "fitness",
+        "yoga",
+        "workout"
+      ],
+      "traditional": [
+        "传统",
+        "古典",
+        "traditional",
+        "classical"
+      ],
+      "children": [
+        "儿童",
+        "小孩",
+        "children",
+        "kids"
+      ],
+      "elderly": [
+        "老年",
+        "大爷",
+        "大妈",
+        "elderly",
+        "senior"
+      ]
+    }
+  },
+  "directories": {
+    "input": "./input_videos",
+    "processed": "./processed_videos",
+    "reports": "./preprocessing_reports",
+    "quarantine": "./quarantine_videos"
+  }
+}

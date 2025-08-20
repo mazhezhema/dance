@@ -1,0 +1,10 @@
+[
+  {
+    "email": "your-email@gmail.com",
+    "password": "your-password",
+    "recovery_email": "recovery@example.com",
+    "phone": "+1234567890",
+    "storage_state_path": "secrets/google_account_state.json",
+    "notes": "主Google账号"
+  }
+]

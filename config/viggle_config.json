@@ -1,0 +1,18 @@
+{
+  "viggle": {
+    "app_url": "https://viggle.ai/app",
+    "login_url": "https://viggle.ai/login"
+  },
+  "processing": {
+    "concurrent_per_account": 3,
+    "rate_limit_min": 45,
+    "rate_limit_max": 90,
+    "max_retries": 2,
+    "generate_timeout_minutes": 10
+  },
+  "browser": {
+    "headless": true,
+    "slow_mo": 0,
+    "timeout": 120000
+  }
+}

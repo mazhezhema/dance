@@ -1,0 +1,27 @@
+{
+  "google": {
+    "login_url": "https://accounts.google.com/signin",
+    "oauth_url": "https://accounts.google.com/o/oauth2/auth",
+    "consent_url": "https://accounts.google.com/signin/oauth/consent"
+  },
+  "browser": {
+    "headless": false,
+    "slow_mo": 1000,
+    "timeout": 30000,
+    "viewport": {
+      "width": 1366,
+      "height": 768
+    }
+  },
+  "oauth": {
+    "client_id": "",
+    "redirect_uri": "http://localhost:8080/callback",
+    "scope": "openid email profile",
+    "response_type": "code"
+  },
+  "security": {
+    "enable_2fa": true,
+    "backup_codes": [],
+    "trusted_devices": []
+  }
+}

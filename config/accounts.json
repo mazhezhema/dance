@@ -1,0 +1,8 @@
+[
+  {
+    "email": "account1@example.com",
+    "storage_state_path": "secrets/account1_state.json",
+    "daily_limit": 30,
+    "concurrent_limit": 3
+  }
+]
