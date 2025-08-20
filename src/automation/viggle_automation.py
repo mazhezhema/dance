@@ -22,7 +22,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 import aiofiles
 
 # 导入数据库模块
-from scripts.task_database import task_db, TaskStatus
+from ..core.task_database import task_db, TaskStatus
 
 # 配置文件路径
 CONFIG_DIR = Path("config")
