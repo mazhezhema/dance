@@ -1,15 +1,15 @@
 {
   "accounts": [
     {
-      "email": "your_viggle_account@example.com",
+      "email": "your_google_email@gmail.com",
       "password": "your_password",
       "storage_state_path": "secrets/account_state.json",
-      "daily_limit": 200,
+      "daily_limit": 150,
       "concurrent_limit": 1,
       "rate_limit_min": 60,
       "rate_limit_max": 120,
       "status": "active",
-      "notes": "主账号 - 处理200个视频"
+      "notes": "Google绑定Viggle账号 - 处理150个视频"
     }
   ],
   "settings": {

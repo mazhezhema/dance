@@ -26,7 +26,7 @@
     "enable_batch_mode": true,
     "batch_size": 50,
     "pause_between_batches": 1800,
-    "max_daily_processing": 200,
+    "max_daily_processing": 150,
     "auto_restart_on_failure": true
   },
   "monitoring": {
