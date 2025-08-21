@@ -1,18 +1,38 @@
 {
   "viggle": {
     "app_url": "https://viggle.ai/app",
-    "login_url": "https://viggle.ai/login"
+    "login_url": "https://viggle.ai/login",
+    "base_url": "https://viggle.ai"
   },
   "processing": {
-    "concurrent_per_account": 3,
-    "rate_limit_min": 45,
-    "rate_limit_max": 90,
-    "max_retries": 2,
-    "generate_timeout_minutes": 10
+    "concurrent_per_account": 1,
+    "rate_limit_min": 60,
+    "rate_limit_max": 120,
+    "max_retries": 3,
+    "generate_timeout_minutes": 15,
+    "batch_size": 50,
+    "pause_between_batches": 1800
   },
   "browser": {
     "headless": true,
-    "slow_mo": 0,
-    "timeout": 120000
+    "slow_mo": 1000,
+    "timeout": 300000,
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "batch_processing": {
+    "enable_batch_mode": true,
+    "batch_size": 50,
+    "pause_between_batches": 1800,
+    "max_daily_processing": 200,
+    "auto_restart_on_failure": true
+  },
+  "monitoring": {
+    "log_level": "INFO",
+    "save_screenshots": true,
+    "save_error_logs": true,
+    "progress_report_interval": 300
   }
 }

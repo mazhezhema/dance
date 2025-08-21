@@ -1,8 +1,22 @@
-[
-  {
-    "email": "account1@example.com",
-    "storage_state_path": "secrets/account1_state.json",
-    "daily_limit": 30,
-    "concurrent_limit": 3
+{
+  "accounts": [
+    {
+      "email": "your_viggle_account@example.com",
+      "password": "your_password",
+      "storage_state_path": "secrets/account_state.json",
+      "daily_limit": 200,
+      "concurrent_limit": 1,
+      "rate_limit_min": 60,
+      "rate_limit_max": 120,
+      "status": "active",
+      "notes": "主账号 - 处理200个视频"
+    }
+  ],
+  "settings": {
+    "max_retries": 3,
+    "retry_delay_min": 300,
+    "retry_delay_max": 600,
+    "session_timeout": 3600,
+    "max_concurrent_sessions": 1
   }
-]
+}
