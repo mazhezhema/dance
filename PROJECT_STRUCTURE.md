@@ -1,6 +1,6 @@
 # 🏗️ Dance项目重构结构说明
 
-## 📁 **新的项目结构**
+## 📁 **清理后的项目结构**
 
 ```
 dance/
@@ -60,11 +60,17 @@ dance/
 │   ├── technology_stack.md
 │   ├── tech_stack_summary.md
 │   └── (其他文档)
+├── 📁 apps/                         # 应用目录
+│   ├── 📁 mobile/                   # 移动应用
+│   │   └── README.md
+│   └── 📁 web/                      # Web应用
+│       └── README.md
 ├── 📁 config/                       # 配置文件
 ├── 📁 backgrounds/                  # 背景素材
 ├── 📁 input/                        # 输入素材
 │   ├── 📁 people/                   # 人物图片
-│   └── 📁 music/                    # 音乐文件
+│   ├── 📁 music/                    # 音乐文件
+│   └── 📁 videos/                   # 视频文件
 ├── 📁 tasks_in/                     # 输入视频
 ├── 📁 downloads/                    # Viggle输出
 ├── 📁 final_output/                 # 最终输出
@@ -72,11 +78,17 @@ dance/
 ├── 📁 temp_gpu/                     # GPU临时文件
 ├── 📁 logs/                         # 日志文件
 ├── 📁 tasks/                        # 任务数据
-├── 📁 secrets/                      # 敏感信息
+├── 📁 preprocessing_reports/        # 预处理报告
+├── 📁 quarantine_videos/            # 隔离视频
 ├── main.py                          # 新主入口
 ├── dance_main.py                    # 旧主入口(保留)
+├── setup_viggle.py                  # Viggle设置脚本
 ├── README.md                        # 项目说明
 ├── CHECKLIST.md                     # 检查清单
+├── README_VIGGLE.md                 # Viggle说明
+├── README_MODULES.md                # 模块说明
+├── QUICK_START.md                   # 快速开始
+├── CROSS_PLATFORM_COMPATIBILITY.md  # 跨平台兼容性
 └── PROJECT_STRUCTURE.md             # 本文档
 ```
 
@@ -102,6 +114,12 @@ dance/
 ### **4. 入口文件更新**
 - **main.py**: 新的主入口文件
 - **dance_main.py**: 旧入口文件保留
+
+### **5. 目录清理优化**
+- **删除重复模块**: 移除旧的 `modules/` 目录
+- **合并重复目录**: 统一输入输出目录结构
+- **删除空目录**: 清理无用的空目录
+- **简化应用结构**: 保留核心的 mobile 和 web 应用
 
 ## 🚀 **使用新结构**
 
@@ -149,6 +167,9 @@ from scripts import task_database
 - [x] 移动工具脚本到tools/
 - [x] 创建包初始化文件
 - [x] 创建新的主入口文件
+- [x] 删除重复的旧模块
+- [x] 合并重复目录
+- [x] 清理空目录
 
 ### **待完成**
 - [ ] 更新导入路径
@@ -178,6 +199,11 @@ from scripts import task_database
 - 保留旧入口文件
 - 渐进式迁移
 - 降低迁移风险
+
+### **5. 目录精简**
+- 删除重复和空目录
+- 减少项目复杂度
+- 提高维护效率
 
 ## 🔧 **下一步**
 
