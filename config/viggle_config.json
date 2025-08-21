@@ -1,22 +1,29 @@
 {
+  "_description": "Viggle处理配置 - null值将使用系统默认配置",
+  "_env_overrides": {
+    "generation_timeout": "DANCE_GENERATION_TIMEOUT",
+    "batch_size": "DANCE_BATCH_SIZE", 
+    "max_daily_processing": "DANCE_DAILY_LIMIT",
+    "log_level": "DANCE_LOG_LEVEL"
+  },
   "viggle": {
     "app_url": "https://viggle.ai/app",
     "login_url": "https://viggle.ai/login",
     "base_url": "https://viggle.ai"
   },
   "processing": {
-    "concurrent_per_account": 1,
-    "rate_limit_min": 60,
-    "rate_limit_max": 120,
-    "max_retries": 3,
-    "generate_timeout_minutes": 15,
-    "batch_size": 50,
-    "pause_between_batches": 1800
+    "concurrent_per_account": null,
+    "rate_limit_min": null,
+    "rate_limit_max": null,
+    "max_retries": null,
+    "generate_timeout_minutes": null,
+    "batch_size": null,
+    "pause_between_batches": null
   },
   "browser": {
     "headless": true,
-    "slow_mo": 1000,
-    "timeout": 300000,
+    "slow_mo": null,
+    "timeout": null,
     "viewport": {
       "width": 1920,
       "height": 1080
@@ -24,15 +31,15 @@
   },
   "batch_processing": {
     "enable_batch_mode": true,
-    "batch_size": 50,
-    "pause_between_batches": 1800,
-    "max_daily_processing": 150,
+    "batch_size": null,
+    "pause_between_batches": null,
+    "max_daily_processing": null,
     "auto_restart_on_failure": true
   },
   "monitoring": {
-    "log_level": "INFO",
+    "log_level": null,
     "save_screenshots": true,
     "save_error_logs": true,
-    "progress_report_interval": 300
+    "progress_report_interval": null
   }
 }

@@ -35,7 +35,7 @@ logger = logging.getLogger(__name__)
 class PipelineConfig:
     """Pipeline配置"""
     # GPU配置
-    gpu_memory_limit: int = 10  # GB，3060总显存12GB，预留2GB
+    gpu_memory_limit: Optional[int] = None  # GB，将从配置中获取
     max_concurrent_jobs: int = 2  # 3060可并行处理2个任务
     
     # 工具路径
@@ -63,6 +63,12 @@ class PipelineConfig:
 class RTX3060Pipeline:
     def __init__(self, config: PipelineConfig):
         self.config = config
+        
+        # 从配置管理器获取GPU配置
+        if config.gpu_memory_limit is None:
+            from ..config.manager import get_config
+            config.gpu_memory_limit = get_config('gpu_processing.memory_limit_gb', 10)
+        
         self.setup_directories()
         self.check_gpu()
         

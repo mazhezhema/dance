@@ -1,0 +1,41 @@
+{
+  "_description": "本地开发配置示例 - 复制为 local.json 并修改",
+  "_note": "此文件优先级高于其他配置文件，适合本地开发环境",
+  
+  "accounts": {
+    "daily_limit": 20,
+    "concurrent_limit": 1,
+    "rate_limit_min": 30,
+    "rate_limit_max": 60
+  },
+  
+  "timeouts": {
+    "generation": 300000,
+    "page_load": 20000,
+    "element_wait": 5000
+  },
+  
+  "batch_processing": {
+    "batch_size": 10,
+    "pause_between_batches": 300,
+    "max_daily_processing": 20
+  },
+  
+  "gpu_processing": {
+    "memory_limit_gb": 8,
+    "batch_size": 1,
+    "enable_optimization": false
+  },
+  
+  "monitoring": {
+    "log_level": "DEBUG",
+    "enable_statistics": true
+  },
+  
+  "anti_detection": {
+    "min_delay": 1000,
+    "max_delay": 3000,
+    "human_pause_min": 1000,
+    "human_pause_max": 3000
+  }
+}

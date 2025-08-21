@@ -115,8 +115,15 @@ class BatchProcessor:
         logger.info(f"✅ 系统检查通过，配置了 {len(accounts_config['accounts'])} 个账号")
         return True
     
-    async def create_batch_tasks(self, batch_size: int = 50) -> list:
+    async def create_batch_tasks(self, batch_size: int = None) -> list:
         """创建分批任务"""
+        if batch_size is None:
+            # 从配置获取默认批次大小
+            import sys
+            sys.path.append(str(Path(__file__).parent.parent))
+            from src.config.manager import get_config
+            batch_size = get_config('batch_processing.batch_size', 50)
+        
         logger.info(f"📋 创建分批任务，批次大小: {batch_size}")
         
         input_dir = Path("tasks_in")

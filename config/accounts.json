@@ -1,22 +1,28 @@
 {
+  "_description": "账号配置文件 - 支持环境变量覆盖",
+  "_env_overrides": {
+    "daily_limit": "DANCE_DAILY_LIMIT",
+    "concurrent_limit": "DANCE_CONCURRENT_LIMIT", 
+    "session_timeout": "DANCE_SESSION_TIMEOUT"
+  },
   "accounts": [
     {
       "email": "your_google_email@gmail.com",
       "password": "your_password",
       "storage_state_path": "secrets/account_state.json",
-      "daily_limit": 150,
-      "concurrent_limit": 1,
-      "rate_limit_min": 60,
-      "rate_limit_max": 120,
+      "daily_limit": null,
+      "concurrent_limit": null,
+      "rate_limit_min": null,
+      "rate_limit_max": null,
       "status": "active",
-      "notes": "Google绑定Viggle账号 - 处理150个视频"
+      "notes": "Google绑定Viggle账号 - 自动使用默认配置"
     }
   ],
   "settings": {
-    "max_retries": 3,
-    "retry_delay_min": 300,
-    "retry_delay_max": 600,
-    "session_timeout": 3600,
-    "max_concurrent_sessions": 1
+    "max_retries": null,
+    "retry_delay_min": null,
+    "retry_delay_max": null,
+    "session_timeout": null,
+    "max_concurrent_sessions": null
   }
 }

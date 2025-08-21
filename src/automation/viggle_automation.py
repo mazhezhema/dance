@@ -51,8 +51,8 @@ class AccountConfig:
     """账号配置"""
     email: str
     storage_state_path: str
-    daily_limit: int = 30
-    concurrent_limit: int = 3
+    daily_limit: Optional[int] = None
+    concurrent_limit: Optional[int] = None
 
 class ViggleEnhancedProcessor:
     def __init__(self, config_path: str = "config/viggle_config.json"):
@@ -60,11 +60,12 @@ class ViggleEnhancedProcessor:
         self.accounts = self.load_accounts()
         self.active_tasks = {}  # 跟踪活跃任务
         
-        # 限流配置
-        self.rate_min = 45  # 最小间隔秒数
-        self.rate_max = 90  # 最大间隔秒数
-        self.generate_timeout = 10 * 60 * 1000  # 生成超时
-        self.page_timeout = 120 * 1000  # 页面超时
+        # 从配置管理器加载超时和限制配置
+        from ..config.manager import get_config
+        self.rate_min = get_config('accounts.rate_limit_min', 45)
+        self.rate_max = get_config('accounts.rate_limit_max', 90)
+        self.generate_timeout = get_config('timeouts.generation', 600000)  # 默认10分钟
+        self.page_timeout = get_config('timeouts.page_load', 120000)  # 默认2分钟
         
     def load_config(self, config_path: str) -> dict:
         """加载配置文件"""
@@ -154,8 +155,9 @@ class ViggleEnhancedProcessor:
     
     def calculate_timeout(self, video_duration: float) -> int:
         """根据视频时长计算超时时间"""
-        # 基础超时5分钟 + 视频时长的60倍
-        base_timeout = 5 * 60 * 1000
+        from ..config.adapter import get_timeout_ms
+        # 基础超时 + 视频时长的60倍
+        base_timeout = get_timeout_ms('generation', 300000)  # 默认5分钟
         video_timeout = int(video_duration * 60 * 1000)
         return max(base_timeout, video_timeout)
     
@@ -258,9 +260,13 @@ class ViggleEnhancedProcessor:
             await page.evaluate("window.scrollBy(0, 100)")
             await page.wait_for_timeout(random.randint(200, 800))
     
-    async def safe_click(self, page: Page, selector: str, timeout: int = 30000):
+    async def safe_click(self, page: Page, selector: str, timeout: int = None):
         """安全点击（带等待和人类化）"""
         element = page.locator(selector)
+        if timeout is None:
+            from ..config.adapter import get_timeout_ms
+            timeout = get_timeout_ms('element_wait', 30000)
+        
         await element.wait_for(state="visible", timeout=timeout)
         await element.scroll_into_view_if_needed()
         await self.humanize_action(page)
@@ -273,7 +279,9 @@ class ViggleEnhancedProcessor:
         
         # 等待文件输入元素
         file_input = page.locator("input[type=file]").first
-        await file_input.wait_for(state="attached", timeout=30000)
+        from ..config.adapter import get_timeout_ms
+        upload_timeout = get_timeout_ms('file_upload', 60000)
+        await file_input.wait_for(state="attached", timeout=upload_timeout)
         
         # 上传文件
         await file_input.set_input_files(file_path)
