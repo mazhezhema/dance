@@ -7,7 +7,7 @@
   "processing": {
     "superres_scale": 2,
     "superres_model": "realesr-animevideov3",
-    "max_concurrent_jobs": 2,
+    "max_concurrent_jobs": 3,
     "temp_directory": "./temp_gpu",
     "keep_intermediates": false
   },
@@ -35,5 +35,12 @@
       1920,
       1080
     ]
+  },
+  "gpu_optimization": {
+    "memory_limit_gb": 8,
+    "batch_size": 2,
+    "enable_optimization": true,
+    "precision": "fp16",
+    "device": "auto"
   }
 }
